@@ -9,6 +9,8 @@ var mainState = {
 
     // Load the pipe sprite
     game.load.image('pipe', 'assets/pipe.png');
+
+    game.load.audio('jump', 'assets/jump.wav');
   },
 
   create: function() {
@@ -47,6 +49,8 @@ var mainState = {
 
     // Move the anchor to the left and downward
     this.bird.anchor.setTo(-0.2, 0.5);
+
+    this.jumpSound = game.add.audio('jump');
   },
 
   update: function() {
@@ -84,6 +88,8 @@ var mainState = {
     if (!this.bird.alive) {
       return;
     }
+
+    this.jumpSound.play();
   },
 
   // Restart the game
