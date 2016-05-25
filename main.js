@@ -37,6 +37,9 @@ var mainState = {
     var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     spaceKey.onDown.add(this.jump, this);
 
+    // Call the 'jump' function when we tap/click on the screen
+    game.input.onDown.add(this.jump, this);
+
     // Create an empty group to hold the pipes
     this.pipes = game.add.group();
 
@@ -51,6 +54,21 @@ var mainState = {
     this.bird.anchor.setTo(-0.2, 0.5);
 
     this.jumpSound = game.add.audio('jump');
+
+    // If this is not a desktop (so it's a mobile device)
+    if (game.device.desktop == false) {
+      // Set the scaling mode to SHOW_ALL to show all the game
+      game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+      // Set a minimum and maximum size for the game
+      // Here the minimum is half the game size
+      // And the maximum is the original game size
+      game.scale.setMinMax(game.width/2, game.height/2, game.width, game.height);
+
+      // Center the game horizontally and vertically
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+    }
   },
 
   update: function() {
