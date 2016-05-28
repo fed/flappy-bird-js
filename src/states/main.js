@@ -26,7 +26,7 @@ export default class Main extends Phaser.State {
     this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
 
     // Keep track of score on the upper left corner
-    this.score = 0;
+    this.score = -1;
     this.labelScore = this.game.add.text(20, 20, "0", {
       font: "30px Arial",
       fill: "#fff"
