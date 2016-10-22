@@ -12,10 +12,19 @@ module.exports = {
   output: {
     filename: './dist/bundle.js'
   },
-  watch: true,
+  devServer: {
+    inline: true,
+    publicPath: '/build/',
+    historyApiFallback: true
+  },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader', include: path.join(__dirname, 'src'), query: { presets: ['es2015'] }},
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'src'),
+        query: { presets: ['es2015'] }
+      },
       { test: /pixi\.js/, loader: 'expose?PIXI' },
       { test: /phaser-split\.js$/, loader: 'expose?Phaser' },
       { test: /p2\.js/, loader: 'expose?p2' }

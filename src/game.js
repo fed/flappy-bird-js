@@ -1,7 +1,6 @@
 import 'pixi';
 import 'p2';
 import Phaser from 'phaser';
-
 import MainState from './states/main';
 import {DEFAULT_WIDTH, DEFAULT_HEIGHT} from './utils/constants';
 
